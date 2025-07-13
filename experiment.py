@@ -57,8 +57,8 @@ def get_random_images(num_images=30):
     # ランダムに指定数選択
     return random.sample(selected_images, min(num_images, len(selected_images)))
 
-# ランダムに10画像を選択
-selected_images = get_random_images(10)
+# ランダムに30画像を選択
+selected_images = get_random_images(30)
 
 print(f"選択された画像数: {len(selected_images)}")
 
@@ -80,7 +80,7 @@ for i, img_info in enumerate(selected_images):
         
         # マスク領域に膨張処理を適用
         binary_mask = mask_array > 0  # バイナリマスクに変換
-        dilated_mask = binary_dilation(binary_mask, iterations=3)  # 3回膨張処理
+        dilated_mask = binary_dilation(binary_mask, iterations=5)  # 5回膨張処理
         mask_array = (dilated_mask * 255).astype(np.uint8)  # 0-255の値に戻す
         
         processed_mask = Image.fromarray(mask_array)
